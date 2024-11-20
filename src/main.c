@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 #ifndef __WIN32__  /*rwj  --  make portable*/
 #include <signal.h>
