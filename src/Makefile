@@ -5,8 +5,8 @@
 #################################################
 
 CC      = gcc
-#CFLAGS  = -O -arch i386 -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mmacosx-version-min=10.4
-#LDFLAGS = -static -arch ppc -isysroot /Developer/SDKs/MacOSX10.4u.sdk
+CFLAGS  = -O -arch arm64
+LDFLAGS = -static -arch arm64
 TAR     = tar
 GZIP    = gzip
 VERS    = byaccj1.15
@@ -55,7 +55,7 @@ dist:
         /bin/cp -f src/yacc.exe $(VERS) ; \
         /bin/cp src/README $(VERS) ; \
 	$(TAR) -cvf - $(VERS) | $(GZIP) > dist/$(VERS).tar.gz ;\
-	$(ZIP) dist/$(VERS).zip $(VERS) \
+	$(ZIP) dist/$(VERS).zip $(VERS) \ƒ
 	)
 
 SRCS   = closure.c \
@@ -72,7 +72,7 @@ SRCS   = closure.c \
 	warshall.c
 
 %.o : %.c
-	$(CC) -c $(CFLAGS) $(INC) $< -o $@
+	$(CC) -c $(CFLAGS) $(INC) $< -o $@ -std=c90
 
 yacc: $(OBJ)
 	$(CC) -o byaccj $(OBJ)
@@ -96,4 +96,3 @@ skeleton.o: skeleton.c defs.h
 symtab.o:   symtab.c defs.h
 verbose.o:  verbose.c defs.h
 warshall.o: warshall.c defs.h
-
